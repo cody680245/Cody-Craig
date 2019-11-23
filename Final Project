@@ -1,0 +1,267 @@
+//****************************************************************************************************************
+//Application: Final Project
+//Author: Cody Craig
+//Date Created: November 28, 2018
+//Date Modified: December 1, 2018
+//Version: 2.2.2.02
+//Description: Scoreboard for Ruapul's Drag Race with a variable competetor selection
+//Supplements: none
+//****************************************************************************************************************
+
+package ccraig_final.project_1128;
+
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.Random;
+import java.util.Scanner;
+
+public class CCraig_FinalProject_1128  
+{
+
+    public static void main(String[] args) throws IOException 
+    {
+       
+       
+       //VARIABLES************************************************************************************************
+       Random rand = new Random();
+       Scanner keyboard = new Scanner(System.in);
+       
+       int yourScore = 0;
+       int theirScore = 0; 
+       
+       int [][] scores;
+       
+       String [] competetor;
+       String [] winPhrases;
+       String [] losePhrases;
+      
+       
+       
+       //MENU SELECTION*****************************************************************************************
+       System.out.println("Welcome to Rupaul's Drag Race! Are you the next Drag Superstar?"
+               + "\n\nWhat is your name?");
+       String yourName = keyboard.nextLine();
+       
+       
+       System.out.println("How many episodes do you want to participate in?");
+       int challenges = keyboard.nextInt();
+       System.out.println("");
+       
+       
+       
+       //MAKING THE ARRAYS*************************************************************************************
+        scores = new int[2][challenges];
+        
+        
+        
+       //ASSIGNING SCORES***************************************************************************************
+       for (int points = 0; points < scores[0].length; points++)
+       {
+           scores[0][points] = rand.nextInt(41);
+           scores[1][points] = rand.nextInt(41);
+       }
+       
+       
+       
+       //RANDOM COMPETETOR NAME*****************************************************************************
+       competetor = new String[42];
+       competetor[0] = "Miss Vanjie";
+       competetor[1] = "Miz Cracker";
+       competetor[2] = "Valentina";
+       competetor[3] = "Latrice Royale";
+       competetor[4] = "Rupaul";
+       competetor[5] = "Alaska Thunderfuck";
+       competetor[6] = "Detox";
+       competetor[7] = "Sharron Needles";
+       competetor[8] = "Evah Destruction";
+       competetor[9] = "Blair St. Claire";
+       competetor[10] = "Bianca Del Rio";
+       competetor[11] = "Aquaria";
+       competetor[12] = "Kameron Michaels";
+       competetor[13] = "Thorgy Thor";
+       competetor[14] = "Chi Chi";
+       competetor[15] = "BenDelaCreme";
+       competetor[16] = "Shangela";
+       competetor[17] = "Trixie Mattel";
+       competetor[18] = "Katya Zamolodchova";
+       competetor[19] = "Manila Luzon";
+       competetor[20] = "Kim Chi";
+       competetor[21] = "Alyssa Edwards";
+       competetor[22] = "Willam";
+       competetor[23] = "Adore Delano";
+       competetor[24] = "Milk";
+       competetor[25] = "Aja";
+       competetor[26] = "Courtney Act";
+       competetor[27] = "Monét X Change";
+       competetor[28] = "Laganja Estranja";
+       competetor[29] = "Dusty Ray Bottoms";
+       competetor[30] = "Monique Heart";
+       competetor[31] = "Farrah Moan";
+       competetor[32] = "Pandora Box";
+       competetor[33] = "Miss Fame";
+       competetor[34] = "Trinity Taylor";
+       competetor[35] = "Ginger Minj";
+       competetor[36] = "Vodka Flawless";
+       competetor[37] = "INeeda Fix";
+       competetor[38] = "Amelia Reasons Why";
+       competetor[39] = "Thespia Dujour";
+       competetor[40] = "Holly Would";
+       competetor[41] = "Eureka";
+       
+       Random name = new Random();
+       int indexOne = name.nextInt(competetor.length);
+       String newName = competetor[indexOne];
+       //System.out.println(newName);
+       //String newName = "Rupaul";
+       
+       
+       
+       //RANDOM WIN PHRASES************************************************************************************
+       winPhrases = new String[5];
+       winPhrases[0] = "My dear, in... the Trampoline Challenge, you soared higher than anyone.\n"
+               + "Con-Drag-ulations, you are a winner";
+       winPhrases[1] = "My dear, in... the Runway Challenge, you gave us more than just walk.\n"
+               + "Con-Drag-ulations, you have won this week's challenge";
+       winPhrases[2] = "My dear, your Lady Gaga was on the Edge of Glory.\n"
+               + "Con-Drag-ulations, you're a star!";
+       winPhrases[3] = "My dear, your Michael Jackson was Off the Wall, and your Madonna look was "
+               + "Something to Remember.\n"
+               + "Con-Drag-ulations, you won this week's challenge. ";
+       winPhrases[4] = "My dear... tonight, you didn't just kill it. You were a mass murderer.\n"
+               + "Con-Drag-ulations, you slayed this week's challenge.";
+       
+       
+       Random win = new Random();
+       int indexTwo = win.nextInt(winPhrases.length);
+       String winner = winPhrases[indexTwo];
+       
+       
+       
+       //RANDOM LOSE PHRASES**********************************************************************************
+       losePhrases = new String[5];
+       losePhrases[0] = "My dear, in... the Trampoline Challenge, you didn't quite bounce.\n"
+               + "I'm sorry, but you are up for elimination";
+       losePhrases[1] = "My dear, in... your runway look was a little Downton Shabby.\n"
+               + "I'm sorry, but you are up for elimination";
+       losePhrases[2] = "My dear, as the Queen of Salsa, you lacked spice.\n"
+               + "I'm sorry, but you are up for elimination";
+       losePhrases[3] = "My dear... donatella me that was your best celebrity imipression.\n"
+               + "I'm sorry, but you are up for elimination.";
+       losePhrases[4] = "My dear... your disco Dorothy did not inspires oohs or Oz.\n"
+               + "I'm sorry, but you are up for elimination";
+       
+       
+       Random lose = new Random();
+       int indexThree = lose.nextInt(losePhrases.length);
+       String loser = losePhrases[indexThree];
+       
+       
+       
+       //PRINT SCORES********************************************************************************************
+       if (newName.length() >=16)
+       {
+           System.out.println(newName + "\t\t" + yourName);
+       }
+       
+       
+       if (newName.length() < 16 && newName.length() > 7)
+       {
+           System.out.println(newName + "\t\t\t" + yourName);
+       }
+       
+       
+       if (newName.length() < 8)
+       {
+            System.out.println(newName + "\t\t\t\t" + yourName);
+       }
+
+       
+       for (int points = 0; points < scores[0].length; points++)
+       {
+           System.out.println(scores[0][points] + "\t\t\t\t" + scores[1][points]);
+           theirScore += scores[0][points];
+           yourScore += scores [1][points];
+       }
+       
+       
+       
+       
+       //TOTAL SCORE OUTPUT***********************************************************************************
+       System.out.println("====\t\t\t\t====");
+       System.out.println(theirScore + "\t\t\t\t" + yourScore );
+       
+       
+       
+       //FINAL WORDS*********************************************************************************************
+//****************************************************************************************************************
+//******************************MAKE SURE TO CHANGE FILE DESTINATION NAME********************************
+//****************************************************************************************************************       
+       FileWriter fw = new FileWriter("/Users/ccraig/Desktop/DragStats", true);
+       PrintWriter outputFile = new PrintWriter(fw);
+       
+       
+       if (newName.equals("Eureka"))
+       {
+           theirScore = 0;
+           System.out.println("====\t\t\t\t====");
+           System.out.println(theirScore + "\t\t\t\t" + yourScore);
+           System.out.println("Eureka, you fat elephant. Get off my stage!");
+            
+           String eureka = ("Eureka, you fat elephant. Get off my stage!");
+           outputFile.println(eureka);
+       }
+       
+       
+       if (yourScore > theirScore)
+       {
+           System.out.println(winner + "\n");
+           
+           String youWin = (winner + "\n");
+           outputFile.println(youWin);
+       }
+
+       
+       if (theirScore > yourScore)
+       {
+           System.out.println(loser + "\n");
+           
+           String youLose = (loser + "\n");
+           outputFile.println(youLose);
+       }
+       
+       
+       
+       //INCASE OF TIE********************************************************************************************
+       while (yourScore == theirScore)
+       {
+           if (newName.equals("Rupaul"))
+           {
+               yourScore =- 1;
+               System.out.println("====\t\t\t\t====");
+               System.out.println(theirScore + "\t\t\t\t" + yourScore);
+               System.out.println("My dear, you lose. This is my game show.");
+               
+               String rupaul = ("My dear, you lose. This is my game show.\n");
+               outputFile.println(rupaul);
+           }
+           
+            else
+           {
+               yourScore += 1;
+               System.out.println("====\t\t\t\t====");
+               System.out.println(theirScore + "\t\t\t\t" + yourScore);
+               System.out.println("My dear, you won by a hair.\n"
+                       + "Con-Drag-ulations, who whigged out of this one\n");
+               
+               String tie = ("My dear, you won by a hair.\n"
+                       + "Con-Drag-ulations, who whigged out of this one\n");
+               outputFile.println(tie);
+           }
+           
+       }//while
+    
+    outputFile.close();
+    }//main
+
+}//public
